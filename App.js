@@ -44,6 +44,11 @@ export default class App extends React.Component {
 
 					perhitungan = text[i]
 					break;
+                
+                case " ":
+
+					break;
+
 
 				default:
                 
@@ -68,6 +73,7 @@ export default class App extends React.Component {
 						hasil = Number(text[i])
 
 					}   
+                    perhitungan = ""
           }
 
         }
@@ -83,7 +89,7 @@ export default class App extends React.Component {
     return (
       <View style={styles.container}>
 
-        <Text style={ {fontSize : 32} }>Kalkulator</Text>
+        <Text style={ {fontSize : 37} }>Kalkulator</Text>
 
         <TextInput
             style={ styles.inputBox }
@@ -91,7 +97,7 @@ export default class App extends React.Component {
             onChangeText={ this.hitung } 
             />
 
-        <Text style={ {fontSize : 20} }>Hasil : { this.state.hasil }</Text>
+        <Text style={ {fontSize : 25} }>Hasil : { this.state.hasil }</Text>
       </View>
     );
   }
@@ -112,7 +118,7 @@ const styles = StyleSheet.create({
     borderRadius : 6,
     padding : 12,
     margin : 6,
-    fontSize : 15
+    fontSize : 20
 
   }
 });
