@@ -1,5 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput } from 'react-native';
+import Hasil from './components/Hasil'
+import InputAngka from './components/input'
 
 export default class App extends React.Component {
   
@@ -11,74 +13,7 @@ export default class App extends React.Component {
     }
   }
 
- hitung = (text) =>  {
-
-		var hasil = 0
-		var perhitungan = ""
-
-			for (var i = 0; i < text.length; i++) {
-    
-			  switch(text[i]){
-            
-				case "*":
-
-					perhitungan = text[i]
-					break;
-
-				case "x":
-             
-					 perhitungan = text[i]
-					 break;
-            
-				case "+":
-
-					perhitungan = text[i]
-					break;
-
-				case "-":
-
-					perhitungan = text[i]
-					break;
-
-				case "/":
-
-					perhitungan = text[i]
-					break;
-                
-                case " ":
-
-					break;
-
-
-				default:
-                
-					if (perhitungan == "x" || perhitungan == "*"){
-
-						hasil *= Number(text[i])
-
-					}else if(perhitungan == "+"){
-               
-						hasil += Number(text[i])
-
-					}else if(perhitungan == "-"){
-
-						hasil -= Number(text[i])
-
-					}else if(perhitungan == "/"){
-
-						hasil /= Number(text[i])
-
-					}else{
-
-						hasil = Number(text[i])
-
-					}   
-                    perhitungan = ""
-          }
-
-        }
-
-  console.log(hasil)
+ hitung = (hasil,text) =>  {
         this.setState({
           hasil : hasil,
 		  angka : text
@@ -91,13 +26,9 @@ export default class App extends React.Component {
 
         <Text style={ {fontSize : 37} }>Kalkulator</Text>
 
-        <TextInput
-            style={ styles.inputBox }
-            value={  this.state.angka } 
-            onChangeText={ this.hitung } 
-            />
-
-        <Text style={ {fontSize : 25} }>Hasil : { this.state.hasil }</Text>
+        <InputAngka angka={ this.state.angka } style={ styles.inputBox } onChangeText={ this.hitung } />
+ 
+        <Hasil hasil={this.state.hasil} />
       </View>
     );
   }
