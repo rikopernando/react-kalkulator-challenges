@@ -1,5 +1,5 @@
 import React from 'react'
-import {Text, View, TextInput} from 'react-native'
+import {Text} from 'react-native'
 
 
 export default class Hasil extends React.Component {

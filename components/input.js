@@ -1,5 +1,5 @@
 import React from 'react'
-import { styleSheet, Text, View, TextInput } from 'react-native'
+import { TextInput } from 'react-native'
 
 
 export default class InputAngka extends React.Component{
@@ -12,6 +12,8 @@ export default class InputAngka extends React.Component{
         
 		var hasil = 0
 		var perhitungan = ""
+        var newAngka = ""
+        var angkaAwal = 0
 
 			for (var i = 0; i < text.length; i++) {
     
@@ -19,27 +21,57 @@ export default class InputAngka extends React.Component{
             
 				case "*":
 
-					perhitungan = text[i]
+					if (perhitungan != ""){
+                    angkaAwal = hasil
+                    }else{
+                    angkaAwal = newAngka
+                    }
+                    perhitungan = text[i]
+                    newAngka = ""
 					break;
 
 				case "x":
              
-					 perhitungan = text[i]
-					 break;
+					if (perhitungan != ""){
+                    angkaAwal = hasil
+                    }else{
+                    angkaAwal = newAngka
+                    }
+                    perhitungan = text[i]
+                    newAngka = ""
+					break;
             
 				case "+":
 
-					perhitungan = text[i]
+					if (perhitungan != ""){
+                    angkaAwal = hasil
+                    }else{
+                    angkaAwal = newAngka
+                    }
+                    perhitungan = text[i]
+                    newAngka = ""
 					break;
 
 				case "-":
 
-					perhitungan = text[i]
+					if (perhitungan != ""){
+                    angkaAwal = hasil
+                    }else{
+                    angkaAwal = newAngka
+                    }
+                    perhitungan = text[i]
+                    newAngka = ""
 					break;
 
 				case "/":
 
-					perhitungan = text[i]
+					if (perhitungan != ""){
+                    angkaAwal = hasil
+                    }else{
+                    angkaAwal = newAngka
+                    }
+                    perhitungan = text[i]
+                    newAngka = ""
 					break;
                 
                 case " ":
@@ -49,28 +81,31 @@ export default class InputAngka extends React.Component{
 
 				default:
                 
+                    if(newAngka == ""){
+                        newAngka = Number(text[i])
+                    }else{
+                        newAngka = newAngka + text[i]
+                    }
+                  
+
 					if (perhitungan == "x" || perhitungan == "*"){
 
-						hasil *= Number(text[i])
+                        hasil = Number(angkaAwal) * Number(newAngka)
 
 					}else if(perhitungan == "+"){
-               
-						hasil += Number(text[i])
+                        
+                        hasil = Number(angkaAwal) + Number(newAngka)
 
 					}else if(perhitungan == "-"){
 
-						hasil -= Number(text[i])
-
+                        hasil = Number(angkaAwal) - Number(newAngka)
+						
 					}else if(perhitungan == "/"){
 
-						hasil /= Number(text[i])
+                        hasil = Number(angkaAwal) / Number(newAngka)
 
-					}else{
-
-						hasil = Number(text[i])
-
-					}   
-                    perhitungan = ""
+                    }
+                   
           }
 
         }
